@@ -6,9 +6,9 @@ Recently I decided to setup a dedicated test Environment to improve my knowledge
 Now that the *testbed* is finally up & running I would like to share my journey with the Community, eventually brainstorming together on how it could be tuned-up.
 
 
-## The use-case
+## Network Setup
 
-Using [eve-ng](www.eve-ng) I linked together few routers with the main aim of simulating a BGP IP Hijacking & to try to overcome the security issue implementing RPKI.
+Using [eve-ng](https://www.eve-ng.net/) I linked together few routers with the main aim of simulating a BGP IP Hijacking & to try to overcome this security issue implementing RPKI.
 For sake of simplicity I deployed only three routers, each one of them belonging to a different BGP Autonomous System. 
 
 The router belonging to **ASN 30** was compromised and started announcing an IP address which overlaps with an IP prefix range *legitimately* advertised by **ASN 20**. From now on, 
@@ -18,7 +18,7 @@ whoever is behind **ASN 10** and will try to reach out to **170.0.0.1/32** will 
     <img src="rpki-lab/net/rpki_network.jpg">
 </p>
 
-The BGP protocol will simply prefer the more specific prefix (170.0.0.1/32) over the less specific prefix (170.0.0.1/24). The traffic will flow towards the compromised ASN 30 via next-hop 10.0.0.6
+The BGP protocol will simply prefer the more specific prefix (170.0.0.1/32) over the less specific prefix (170.0.0.1/24). The traffic will flow towards the compromised ASN 30 via next-hop 10.0.0.6.
 
 ```
 RP/0/0/CPU0:router-asn10#sh bgp sessions
@@ -58,3 +58,8 @@ Tracing the route to 170.0.0.1
 RP/0/0/CPU0:router-asn10#
 
 ```
+
+## RPKI IT Infrastructure Setup
+
+[nlnetlabs](https://www.nlnetlabs.nl/) is one of the main reference when it comes to RPKI: they wrote extremely clear [Documentation](https://rpki.readthedocs.io/) about this subject and last but not least 
+they developed some of they key software components I utilized within (My)Lab Infrastructure.    
