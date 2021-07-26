@@ -72,7 +72,7 @@ Mainly responsible for Dispatching the validated ROAs to the BGP routers.
 Other than nlnetlabs [OpenBSD's](https://www.openbsd.org) [rpki-client](https://www.rpki-client.org/) is with no doubt the core component of the whole solution - responsible for:
 
 1. ROAs (Route Origin Authorization) X.509 Certificates synchronization (via RSYNC or RRDP) from a given TA (Trust Anchor). The TA is typically a RIR/LIR (Regional/Local Internet Registries) organization.
-2. Validating the trust chain for the associated ROAs (including checking relevant Certificate Revocation Lists).
+2. Validating the chain of trust for the associated ROAs (including checking relevant Certificate Revocation Lists).
 3. Caching a list of the validated ROA Payloads (VRPs) in various formats, for example JSON.
 
 <p align="center">
