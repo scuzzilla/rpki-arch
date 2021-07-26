@@ -62,4 +62,20 @@ RP/0/0/CPU0:router-asn10#
 ## RPKI IT Infrastructure Setup
 
 [nlnetlabs](https://www.nlnetlabs.nl/) is one of the main reference when it comes to RPKI: they wrote extremely clear [Documentation](https://rpki.readthedocs.io/) about this subject and last but not least 
-they developed some of they key software components I utilized within (My)Lab Infrastructure.    
+they developed some of they key software components I also utilized within (My)Lab Infrastructure:
+
+- [Krill](https://krill.docs.nlnetlabs.nl/) classified as Certificate Authority Software - responsible for:
+1. Forging and Publishing the ROAs to the Parent Certification Authority.
+
+- [RTRTR](https://rtrtr.docs.nlnetlabs.nl/) classified as RTR (RPKI-to-router protocol) Server Software ([RFC 6810 (v0)](https://tools.ietf.org/html/rfc6810.html) & [RFC 8210 (v1)](https://tools.ietf.org/html/rfc8210.html)) - responsible for:
+1. Dispatch the validated ROAs to the BGP routers.
+
+[OpenBSD's](https://www.openbsd.org) [rpki-client](https://www.rpki-client.org/) is with no doubt the core component of the whole solution - responsible for:
+
+1. ROAs (Route Origin Authorization) X.509 Certificates synchronization (via RSYNC or RRDP) from a given TA (Trust Anchor). The TA is typically a RIR/LIR (Regional/Local Internet Registries) organization.
+2. Validating the trust chain for the associated ROAs (including checking relevant CRLs).
+3. Caching a list of the validated ROA Payloads (VRPs) in various formats.
+
+<p align="center">
+    <img src="rpki-lab/services/rpki_service.jpg">
+</p>
