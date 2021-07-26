@@ -1,0 +1,34 @@
+### root@rpki01:~# cat /var/lib/rpki-client/json
+{
+        "metadata": {
+                "buildmachine": "rpki01",
+                "buildtime": "2021-07-26T08:04:49Z",
+                "elapsedtime": "133",
+                "usertime": "0",
+                "systemtime": "0",
+                "roas": 6,
+                "failedroas": 0,
+                "invalidroas": 0,
+                "certificates": 49,
+                "failcertificates": 0,
+                "invalidcertificates": 0,
+                "tals": 1,
+                "talfiles": "/etc/tals/testbed.tal",
+                "manifests": 49,
+                "failedmanifests": 43,
+                "stalemanifests": 0,
+                "crls": 6,
+                "repositories": 9,
+                "vrps": 6,
+                "uniquevrps": 6
+        },
+
+        "roas": [
+                { "asn": "AS65101", "prefix": "10.0.0.0/23", "maxLength": 24, "ta": "testbed" },
+                { "asn": "AS20", "prefix": "170.0.0.0/24", "maxLength": 24, "ta": "testbed" },
+                { "asn": "AS10", "prefix": "172.0.0.0/24", "maxLength": 24, "ta": "testbed" },
+                { "asn": "AS65001", "prefix": "192.168.0.0/23", "maxLength": 24, "ta": "testbed" },
+                { "asn": "AS37708", "prefix": "196.1.0.0/24", "maxLength": 24, "ta": "testbed" },
+                { "asn": "AS65001", "prefix": "2001:db8::/32", "maxLength": 64, "ta": "testbed" }
+        ]
+}
