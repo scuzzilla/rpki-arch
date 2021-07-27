@@ -26,7 +26,7 @@ whoever is behind **ASN 10** and will try to reach out to **170.0.0.1/32** will 
 
 The BGP protocol will simply prefer the more specific prefix (170.0.0.1/32) over the less specific one (170.0.0.1/24). The traffic will flow towards the compromised ASN 30 via next-hop 10.0.0.6.
 
-```
+```c
 RP/0/0/CPU0:router-asn10#sh bgp sessions
 Mon Jul 26 14:28:00.527 CET
 
@@ -98,7 +98,7 @@ I called the Child CA "rpki-alfanetti" and as you can see from the snippet below
 
 The Parent CA is certifying that I'm entitled over for some specific resources: "asn: AS10, v4: 170.0.0.0/24" is one of them. Third parties can, in a second stage, Download the Signed Certificate (to be verified) which proves the ownership over that specific resource.
 Using RPKI terminology, this specific resource is named Route Origin Authorization (also known as **ROA**)   
-```
+```yaml
 root@rpki01:~# krillc parents statuses --token e1bb6e95c21740f83dba1adb1ff19ade --ca rpki-alfanetti
 Parent: testbed
 URI: https://testbed.rpki.nlnetlabs.nl/rfc8181/rpki-alfanetti
@@ -125,7 +125,7 @@ The OpenBSD's rpki-client is periodically syncing with the Parent CA looking for
 the rpki-client is somehow hiding the complexity coming from the necessary cryptography in order to validate the received ROAs.
 
 Once the validation process is completed the ROAs information are extracted from the associated certificates and presented in a clear text format (for example JSON) ready to be "digested" by the routers.
-```
+```json
 ### root@rpki01:~# cat /var/lib/rpki-client/json
 {
         "metadata": {
@@ -162,35 +162,3 @@ Once the validation process is completed the ROAs information are extracted from
 }
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
