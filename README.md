@@ -14,7 +14,7 @@ Now that the testbed is finally up & running I would like to share my journey wi
 
 ## Network Setup
 
-Using [eve-ng](https://www.eve-ng.net/) I linked together few routers with the main aim of simulating a BGP IP Hijacking & to try to overcome this security issue implementing RPKI.
+Using [eve-ng](https://www.eve-ng.net/) I linked together few routers with the main aim of simulating a BGP IP Hijacking attempt and eventually try to neutralize this threat implementing RPKI.
 For sake of simplicity I deployed only three routers, each one of them belonging to a different BGP Autonomous System. 
 
 The router belonging to **ASN 30** was compromised and started announcing an IP address which overlaps with an IP prefix range *legitimately* advertised by **ASN 20**. From now on, 
