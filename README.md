@@ -86,18 +86,18 @@ Other than nlnetlabs [OpenBSD's](https://www.openbsd.org) [rpki-client](https://
 </p>
 
 
-Since I'm working in a **non**-productive environment I decided to collapse all services within a single Linux host. However, potentially, nothing is preventing the possibility to horizontally scale each one of the involved services.
-For what concerning the software installation & configuration I recommend to refer to the official documentation. Nevertheless, for sake of completeness, I will include the main configuration files within the References.
+Since I'm working within a testing environment I decided to collapse all services on a single Linux host. However, potentially, nothing is preventing the possibility to horizontally scale each one of the involved services.
+For what concerning the software installation & configuration I recommend to refer to the respective official documentation. Nevertheless, for sake of completeness, I will include the main configuration files within the References section.
 
 ### KRILL
 
 Krill can be deployed using two different models: [Hosted RPKI](https://rpki.readthedocs.io/en/latest/rpki/implementation-models.html#hosted-rpki) or [Delegated RPKI](https://rpki.readthedocs.io/en/latest/rpki/implementation-models.html#delegated-rpki). I chose the latter.
 After successfully completing both the [Repository setup](https://krill.docs.nlnetlabs.nl/en/stable/get-started.html#repository-setup) & the [Parent setup](https://krill.docs.nlnetlabs.nl/en/stable/get-started.html#parent-setup) I was ready to start Publishing new ROAs.
 
-I called the Child CA "rpki-alfanetti" and as you can see from the snippet below the relationship with the Parent CA (testbed offered by nlnetlabs) is in Status: **Success**.
+I named the Child CA "rpki-alfanetti" and as you can see from the text snippet below the relationship with the Parent CA (testbed offered by nlnetlabs) is in Status: **Success**.
 
-The Parent CA is certifying that I'm entitled over for some specific resources: "asn: AS10, v4: 170.0.0.0/24" is one of them. Third parties can, in a second stage, Download the Signed Certificate (to be verified) which proves the ownership over that specific resource.
-Using RPKI terminology, this specific resource is named Route Origin Authorization (also known as **ROA**)   
+The Parent CA is certifying that I'm entitled over some specific resources: **"asn: AS10, v4: 170.0.0.0/24"** is one of them. Third parties can, in a second stage, download the Signed Certificate (to be verified) which proves the ownership over that specific resource.
+Using RPKI terminology, the resource I'm dealing with is named Route Origin Authorization (also known as **ROA**)   
 ```yaml
 root@rpki01:~# krillc parents statuses --token e1bb6e95c21740f83dba1adb1ff19ade --ca rpki-alfanetti
 Parent: testbed
@@ -114,17 +114,18 @@ Resource Entitlements: asn: AS10, AS20, v4: 170.0.0.0/24, 172.0.0.0/24, v6:
     cert PEM:
 
 -----BEGIN CERTIFICATE-----
-MIIFsTCCBJ ... MojHUKkp30dIbbpo49FocyZyI58lFI7DsDVmXn9Bz0sAeYRBSNviq7K+O4SS/RZezDuY/5MEXHvDWsZXldfX1r+RxsgXi0/5fuudLU4CYlWQGzs
+MIIFsTCCBJ ... MojHUKkp30dIbbpo49FocyZyI58lFI7DsDVmXn9Bz0sAeYRB
+SNviq7K+O4SS/RZezDuY/5MEXHvDWsZXldfX1r+RxsgXi0/5fuudLU4CYlWQGzs
 -----END CERTIFICATE-----
 
 ```
 
 ### OpenBSD's rpki-client
 
-The OpenBSD's rpki-client is periodically syncing with the Parent CA looking for new ROAs. In order to do that is taking in input some information regarding the Trust Anchor (belonging the Parent CA) among which the certificate used to validate the received ROAs.
-the rpki-client is somehow hiding the complexity coming from the necessary cryptography in order to validate the received ROAs.
+The OpenBSD's rpki-client is periodically syncing with the Parent CA looking for new ROAs. In order to do that is taking as input some information regarding the Trust Anchor (belonging the Parent CA) in particular there's the certificate used to validate the received ROAs.
+the rpki-client is somehow hiding the complexity coming from the cryptography required in order to validate the received ROAs.
 
-Once the validation process is completed the ROAs information are extracted from the associated certificates and presented in a clear text format (for example JSON) ready to be "digested" by the routers.
+Once the validation process is completed the ROAs information are extracted from the associated certificates and presented in a clear text format (for example JSON); ready to be "digested" by the routers.
 ```json
 ### root@rpki01:~# cat /var/lib/rpki-client/json
 {
@@ -160,5 +161,27 @@ Once the validation process is completed the ROAs information are extracted from
                 { "asn": "AS65001", "prefix": "2001:db8::/32", "maxLength": 64, "ta": "testbed" }
         ]
 }
+
+```
+
+### HTTP Server/RTRTR & BGP Routers configuration
+
+A basic HTTP Service (python3 -m http.server 8081) is allowing the RTR Server to access the JSON file storing the ROAs' records. RTRTR is now listening for incoming connection from the BGP routers on the TCP socket 192.168.122.253:8282.
+The RTR Server should be reachable by the involved routers and the below configuration should be present on each one of them. 
+```c
+router bgp <ASN>
+ rpki server 192.168.122.253
+  transport tcp port 8282
+  refresh-time 30
+ !
+```
+
+Checking the connectivity status to the RTR Server should display something similar to this:
+```c
+RP/0/0/CPU0:router-asn10#sh bgp rpki server summary      
+Tue Jul 27 14:29:11.497 CET
+
+Hostname/Address        Transport       State           Time            ROAs (IPv4/IPv6)
+192.168.122.253         TCP:8282        ESTAB           04:41:46        5/1
 
 ```
