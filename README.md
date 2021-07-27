@@ -186,3 +186,65 @@ Hostname/Address        Transport       State           Time            ROAs (IP
 192.168.122.253         TCP:8282        ESTAB           04:41:46        5/1
 
 ```
+
+### Enabling BGP Path validation
+
+Now that all the legitimate ASNs are participating to the RPKI process we should be able to quickly identify the **Invalid** BGP paths. 
+As expected, showing the IPv4 unicast BGP database of the router belonging to ASN 10 is reveling that the path towards ASN 30 is not verified:
+```c
+RP/0/0/CPU0:router-asn10#show bgp ipv4 unicast origin-as validity | b ^Origin-AS
+Tue Jul 27 14:42:25.998 CET
+Origin-AS validation codes: V valid, I invalid, N not-found, D disabled
+    Network            Next Hop            Metric LocPrf Weight Path
+V*> 170.0.0.0/24       10.0.0.2                 0             0 20 i
+I*> 170.0.0.1/32       10.0.0.6                 0             0 30 i
+ *> 172.0.0.0/24       0.0.0.0                  0         32768 i
+
+Processed 3 prefixes, 3 paths
+``` 
+However, by default on CISCO-XR routers, invalid paths are not automatically discarded. We should manually enable the **valid** paths selection with this command:
+```c
+router bgp <ASN>
+ bgp bestpath origin-as use validity
+```
+Immediately after the new configuration is committed only the **valid** path is selected:
+```c
+RP/0/0/CPU0:router-asn10#traceroute 170.0.0.1
+Tue Jul 27 14:55:23.282 CET
+
+Type escape sequence to abort.
+Tracing the route to 170.0.0.1
+
+ 1  10.0.0.2 0 msec  *  9 msec
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
