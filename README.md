@@ -77,7 +77,7 @@ Its main job is to dispatch the validated ROAs to the BGP enabled routers.
 
 Other than nlnetlabs [OpenBSD's](https://www.openbsd.org) [rpki-client](https://www.rpki-client.org/) is with no doubt the core component of the whole solution. It's responsible for:
 
-1. ROAs (X.509 Certificates) synchronization (via RSYNC or RRDP) from a given *Trust Anchor* (TA). The TA is usually a *Regional/Local Internet Registries* (RIR/LIR) organization.
+1. ROAs (X.509 Certificates) synchronization (via RSYNC or RRDP) from a given *Trust Anchor* (TA). The TA is usually a *Regional/Local Internet Registry* (RIR/LIR) organization.
 2. Validating the chain of trust for the associated ROAs (including checking relevant Certificate Revocation Lists).
 3. Caching a list of the *validated ROAs' Payloads* (VRPs) in various formats, for example JSON.
 
