@@ -76,5 +76,5 @@ Other than nlnetlabs [OpenBSD's](https://www.openbsd.org) [rpki-client](https://
 3. Caching a list of the validated ROA Payloads (VRPs) in various formats, for example JSON.
 
 <p align="center">
-    <img src="https://1drv.ms/u/s!AjuhzEhpXrG53kEcPJKHK29R5r-S?e=N9TeJ5">
+    <img src="https://1drv.ms/u/s!AjuhzEhpXrG53kHUsBzjzoQ5Etpi">
 </p>
