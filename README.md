@@ -92,7 +92,8 @@ For what concerning the software installation & configuration I recommend to ref
 
 ### KRILL
 
-Krill can be deployed using two different models: [Hosted RPKI](https://rpki.readthedocs.io/en/latest/rpki/implementation-models.html#hosted-rpki) or [Delegated RPKI](https://rpki.readthedocs.io/en/latest/rpki/implementation-models.html#delegated-rpki). I chose the latter.
+Krill can be deployed using two different models: [Hosted RPKI](https://rpki.readthedocs.io/en/latest/rpki/implementation-models.html#hosted-rpki) or [Delegated RPKI](https://rpki.readthedocs.io/en/latest/rpki/implementation-models.html#delegated-rpki): I chose the latter.
+
 After successfully completing both the [Repository setup](https://krill.docs.nlnetlabs.nl/en/stable/get-started.html#repository-setup) & the [Parent setup](https://krill.docs.nlnetlabs.nl/en/stable/get-started.html#parent-setup) I was ready to start Publishing new ROAs.
 
 I named the Child CA "rpki-alfanetti" and as you can see from the text snippet below the relationship with the Parent CA (testbed offered by nlnetlabs) is in Status: **Success**.
