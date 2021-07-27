@@ -96,7 +96,7 @@ After successfully completing both the [Repository setup](https://krill.docs.nln
 
 I called the Child CA "rpki-alfanetti" and as you can see from the snippet below the relationship with the Parent CA (testbed offered by nlnetlabs) is in Status: **Success**.
 
-The Parent CA is certifying that I'm entitled over for some specific resources: "asn: AS10, v4: 170.0.0.0/24" is one of them. Third parties can, in a second stage, Download the Signed Certificate (to be verified) which proves the ownership of that specific resource.
+The Parent CA is certifying that I'm entitled over for some specific resources: "asn: AS10, v4: 170.0.0.0/24" is one of them. Third parties can, in a second stage, Download the Signed Certificate (to be verified) which proves the ownership over that specific resource.
 Using RPKI terminology, this specific resource is named Route Origin Authorization (also known as **ROA**)   
 ```
 root@rpki01:~# krillc parents statuses --token e1bb6e95c21740f83dba1adb1ff19ade --ca rpki-alfanetti
@@ -119,9 +119,49 @@ MIIFsTCCBJ ... MojHUKkp30dIbbpo49FocyZyI58lFI7DsDVmXn9Bz0sAeYRBSNviq7K+O4SS/RZez
 
 ```
 
+### OpenBSD's rpki-client
 
+The OpenBSD's rpki-client is periodically syncing with the Parent CA looking for new ROAs. In order to do that is taking in input some information regarding the Trust Anchor (belonging the Parent CA) among which the certificate used to validate the received ROAs.
+the rpki-client is somehow hiding the complexity coming from the necessary cryptography in order to validate the received ROAs.
 
+Once the validation process is completed the ROAs information are extracted from the associated certificates and presented in a clear text format (for example JSON) ready to be "digested" by the routers.
+```
+### root@rpki01:~# cat /var/lib/rpki-client/json
+{
+        "metadata": {
+                "buildmachine": "rpki01",
+                "buildtime": "2021-07-26T08:04:49Z",
+                "elapsedtime": "133",
+                "usertime": "0",
+                "systemtime": "0",
+                "roas": 6,
+                "failedroas": 0,
+                "invalidroas": 0,
+                "certificates": 49,
+                "failcertificates": 0,
+                "invalidcertificates": 0,
+                "tals": 1,
+                "talfiles": "/etc/tals/testbed.tal",
+                "manifests": 49,
+                "failedmanifests": 43,
+                "stalemanifests": 0,
+                "crls": 6,
+                "repositories": 9,
+                "vrps": 6,
+                "uniquevrps": 6
+        },
 
+        "roas": [
+                { "asn": "AS65101", "prefix": "10.0.0.0/23", "maxLength": 24, "ta": "testbed" },
+                { "asn": "AS20", "prefix": "170.0.0.0/24", "maxLength": 24, "ta": "testbed" },
+                { "asn": "AS10", "prefix": "172.0.0.0/24", "maxLength": 24, "ta": "testbed" },
+                { "asn": "AS65001", "prefix": "192.168.0.0/23", "maxLength": 24, "ta": "testbed" },
+                { "asn": "AS37708", "prefix": "196.1.0.0/24", "maxLength": 24, "ta": "testbed" },
+                { "asn": "AS65001", "prefix": "2001:db8::/32", "maxLength": 64, "ta": "testbed" }
+        ]
+}
+
+```
 
 
 
