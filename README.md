@@ -9,7 +9,7 @@ status: draft
 ## Context 
 
 Recently I decided to setup a dedicated test Environment to improve my knowledge around *Resource Public Key Infrastructure* (RPKI).
-Now that the testbed is finally up & running I would like to share my journey with the **Networkers Community**, eventually brainstorming together on how it could be tuned-up.
+Now that the testbed is finally up & running I would like to share my journey with the **"Networkers Community"**, eventually brainstorming together on how it could be tuned-up.
 
 
 ## Network Setup
@@ -70,12 +70,12 @@ RP/0/0/CPU0:router-asn10#
 Whenever it comes to RPKI [nlnetlabs](https://www.nlnetlabs.nl/) is one of the main reference: they wrote extremely clear [Documentation](https://rpki.readthedocs.io/) and last but not least 
 they developed some of they key software components I (also) utilized within (My)Lab Infrastructure:
 
-- [Krill](https://krill.docs.nlnetlabs.nl/) can be classified as "Certificate Authority Software" and in my setup it's mainly responsible for Forging and Publishing the *Route(s) Origin Authorization* (ROAs) to the Parent Certification Authority.
+- [Krill](https://krill.docs.nlnetlabs.nl/) can be classified as "Certificate Authority Software" and in my setup is mainly responsible for Forging and Publishing the *Route(s) Origin Authorization* (ROAs) to the Parent Certification Authority.
 
 - [RTRTR](https://rtrtr.docs.nlnetlabs.nl/) can be classified as *RPKI-to-router protocol* (RTR) Server Software ([RFC 6810-v0](https://tools.ietf.org/html/rfc6810.html) & [RFC 8210-v1](https://tools.ietf.org/html/rfc8210.html)).
 Its main job is to dispatch the validated ROAs to the BGP enabled routers.
 
-Other than nlnetlabs [OpenBSD's](https://www.openbsd.org) [rpki-client](https://www.rpki-client.org/) is with no doubt the core component of the whole solution. It's responsible for:
+Other than nlnetlabs, [OpenBSD's](https://www.openbsd.org) [rpki-client](https://www.rpki-client.org/) is with no doubt the core component of the whole solution. It's responsible for:
 
 1. ROAs (X.509 Certificates) synchronization (via RSYNC or RRDP) from a given *Trust Anchor* (TA). The TA is usually a *Regional/Local Internet Registry* (RIR/LIR) organization.
 2. Validating the chain of trust for the associated ROAs (including checking relevant Certificate Revocation Lists).
@@ -86,7 +86,7 @@ Other than nlnetlabs [OpenBSD's](https://www.openbsd.org) [rpki-client](https://
 </p>
 
 
-Since I'm working within a testing environment I decided to collapse all services on a single Linux host. However, potentially, nothing is preventing the possibility to horizontally scale each one of the involved services.
+Since I'm working within a testing environment I decided to collapse all services on a single Linux host. However, potentially, nothing is preventing the ability to horizontally scale each one of the involved services.
 
 For what concerning the software installation & configuration I recommend to refer to the respective official documentation. Nevertheless, for sake of completeness, I will include the main configuration files within the References & Resources section.
 
@@ -99,7 +99,7 @@ After successfully completing both the [Repository setup](https://krill.docs.nln
 I named the Child CA "rpki-alfanetti" and as you can see from the text snippet below the relationship with the Parent CA (testbed offered by nlnetlabs) is in Status: **Success**.
 
 The Parent CA is certifying that I'm entitled over some specific resources: **"asn: AS20, v4: 170.0.0.0/24"** is one of them. Third parties can, in a second stage, download the Signed Certificate (to be verified) which proves the ownership over that specific resource.
-Using RPKI terminology, the resource I'm dealing with is named Route Origin Authorization (also known as **ROA**)   
+In compliance with the RPKI terminology, the resource I'm dealing with is named Route Origin Authorization (also known as **ROA**)   
 ```yaml
 root@rpki01:~# krillc parents statuses --token e1bb6e95c21740f83dba1adb1ff19ade --ca rpki-alfanetti
 Parent: testbed
@@ -128,7 +128,7 @@ The OpenBSD's rpki-client is periodically syncing with the Parent CA looking for
 
 The rpki-client is somehow hiding the complexity coming from the cryptography required in order to validate the received ROAs.
 
-Once the validation process is completed the ROAs information are extracted from the associated certificates and presented in a clear text format (for example JSON); ready to be "digested" by the routers.
+Once the validation process is completed the ROAs information are extracted from the associated certificates and presented in clear text format (for example JSON); ready to be "digested" by the routers.
 ```json
 ### root@rpki01:~# cat /var/lib/rpki-client/json
 {
@@ -169,7 +169,7 @@ Once the validation process is completed the ROAs information are extracted from
 
 #### HTTP Server/RTRTR & BGP Routers configuration
 
-A basic HTTP Service (python3 -m http.server 8081) is allowing the RTR Server to access the JSON file storing the ROAs' records. RTRTR is now listening for incoming connection from the BGP routers on the TCP socket <192.168.122.253:8282>.
+A basic HTTP Service (python3 -m http.server 8081) is allowing the RTR Server to access the JSON file storing the ROAs' records. RTRTR is now listening for incoming connections from the BGP routers on the TCP socket <192.168.122.253:8282>.
 
 The RTR Server should be reachable by the involved routers and the below configuration should be present on each one of them. 
 ```c
@@ -210,7 +210,7 @@ However, by default on CISCO-XR routers, invalid paths are not automatically dis
 router bgp <ASN>
  bgp bestpath origin-as use validity
 ```
-Immediately after the new configuration is committed only the **valid** path are selected and any risk of IP Hijacking is defeated:
+Immediately after the new configuration is committed only the **valid** path are selected and any risk of IP Hijacking is finally defeated:
 ```c
 RP/0/0/CPU0:router-asn10#traceroute 170.0.0.1
 Tue Jul 27 14:55:23.282 CET
