@@ -98,7 +98,7 @@ After successfully completing both the [Repository setup](https://krill.docs.nln
 
 I named the Child CA "rpki-alfanetti" and as you can see from the text snippet below the relationship with the Parent CA (testbed offered by nlnetlabs) is in Status: **Success**.
 
-The Parent CA is certifying that I'm entitled over some specific resources: **"asn: AS10, v4: 170.0.0.0/24"** is one of them. Third parties can, in a second stage, download the Signed Certificate (to be verified) which proves the ownership over that specific resource.
+The Parent CA is certifying that I'm entitled over some specific resources: **"asn: AS20, v4: 170.0.0.0/24"** is one of them. Third parties can, in a second stage, download the Signed Certificate (to be verified) which proves the ownership over that specific resource.
 Using RPKI terminology, the resource I'm dealing with is named Route Origin Authorization (also known as **ROA**)   
 ```yaml
 root@rpki01:~# krillc parents statuses --token e1bb6e95c21740f83dba1adb1ff19ade --ca rpki-alfanetti
