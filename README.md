@@ -72,7 +72,7 @@ they developed some of they key software components I (also) utilized within (My
 
 - [Krill](https://krill.docs.nlnetlabs.nl/) can be classified as "Certificate Authority Software" and it's mainly responsible for Forging and Publishing the *Route(s) Origin Authorization* (ROAs) to the Parent Certification Authority.
 
-- [RTRTR](https://rtrtr.docs.nlnetlabs.nl/) can be classified as *RPKI-to-router protocol* (RTR) Server Software ([RFC 6810 (v0)](https://tools.ietf.org/html/rfc6810.html) & [RFC 8210 (v1)](https://tools.ietf.org/html/rfc8210.html)).
+- [RTRTR](https://rtrtr.docs.nlnetlabs.nl/) can be classified as *RPKI-to-router protocol* (RTR) Server Software ([RFC 6810-v0](https://tools.ietf.org/html/rfc6810.html) & [RFC 8210-v1](https://tools.ietf.org/html/rfc8210.html)).
 Its main job is to dispatch the validated ROAs to the BGP enabled routers.
 
 Other than nlnetlabs [OpenBSD's](https://www.openbsd.org) [rpki-client](https://www.rpki-client.org/) is with no doubt the core component of the whole solution. It's responsible for:
