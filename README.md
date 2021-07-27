@@ -87,6 +87,7 @@ Other than nlnetlabs [OpenBSD's](https://www.openbsd.org) [rpki-client](https://
 
 
 Since I'm working within a testing environment I decided to collapse all services on a single Linux host. However, potentially, nothing is preventing the possibility to horizontally scale each one of the involved services.
+
 For what concerning the software installation & configuration I recommend to refer to the respective official documentation. Nevertheless, for sake of completeness, I will include the main configuration files within the References section.
 
 ### KRILL
