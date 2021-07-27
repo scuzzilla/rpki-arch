@@ -210,7 +210,7 @@ However, by default on CISCO-XR routers, invalid paths are not automatically dis
 router bgp <ASN>
  bgp bestpath origin-as use validity
 ```
-Immediately after the new configuration is committed only the **valid** path is selected:
+Immediately after the new configuration is committed only the **valid** path are selected and any risk of IP Hijacking is defeated:
 ```c
 RP/0/0/CPU0:router-asn10#traceroute 170.0.0.1
 Tue Jul 27 14:55:23.282 CET
