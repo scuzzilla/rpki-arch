@@ -87,7 +87,34 @@ Other than nlnetlabs [OpenBSD's](https://www.openbsd.org) [rpki-client](https://
 
 
 Since I'm working in a **non**-productive environment I decided to collapse all services within a single Linux host. However, potentially, nothing is preventing the possibility to horizontally scale each one of the involved services.
-For what concerning the software installation & configuration I recommend to refer to the official documentation. Nevertheless, for sake of completeness, within the References I will include the main configuration files.
+For what concerning the software installation & configuration I recommend to refer to the official documentation. Nevertheless, for sake of completeness, I will include the main configuration files within the References.
+
+### KRILL
+
+Krill can be deployed using two different models: [Hosted RPKI](https://rpki.readthedocs.io/en/latest/rpki/implementation-models.html#hosted-rpki) or [Delegated RPKI](https://rpki.readthedocs.io/en/latest/rpki/implementation-models.html#delegated-rpki). I chose the latter.
+After successfully completing both the [Repository setup](https://krill.docs.nlnetlabs.nl/en/stable/get-started.html#repository-setup) & the [Parent setup](https://krill.docs.nlnetlabs.nl/en/stable/get-started.html#parent-setup) I was ready to start Publishing new ROAs
+
+I called the Child CA "rpki-alfanetti" and as you can verify from the snippet below the relationship with the Parent CA (testbed offered by nlnetlabs) is in Status: **Success**
+```
+root@rpki01:~# krillc parents statuses --token e1bb6e95c21740f83dba1adb1ff19ade --ca rpki-alfanetti
+Parent: testbed
+URI: https://testbed.rpki.nlnetlabs.nl/rfc8181/rpki-alfanetti
+Status: success
+Last contacted: 2021-07-27T08:50:00+00:00
+Next contact on or before: 2021-07-27T09:00:00+00:00
+Resource Entitlements: asn: AS10, AS20, v4: 170.0.0.0/24, 172.0.0.0/24, v6: 
+  resource class: 0
+  issuing cert uri: rsync://testbed.rpki.nlnetlabs.nl/repo/ta/0/1040FA57F99F4B3DE2626F6EE1C56664CB81D2C8.cer
+  received certificate(s):
+    published at: rsync://testbed.rpki.nlnetlabs.nl/repo/testbed/0/660E433B340BC5B12B204F1544C6EA18A5931DB4.cer
+    resources:    asn: AS10, AS20, v4: 170.0.0.0/24, 172.0.0.0/24, v6: 
+    cert PEM:
+
+-----BEGIN CERTIFICATE-----
+MIIFsTCCBJ ... MojHUKkp30dIbbpo49FocyZyI58lFI7DsDVmXn9Bz0sAeYRBSNviq7K+O4SS/RZezDuY/5MEXHvDWsZXldfX1r+RxsgXi0/5fuudLU4CYlWQGzs
+-----END CERTIFICATE-----
+
+```
 
 
 
