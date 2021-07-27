@@ -88,9 +88,9 @@ Other than nlnetlabs [OpenBSD's](https://www.openbsd.org) [rpki-client](https://
 
 Since I'm working within a testing environment I decided to collapse all services on a single Linux host. However, potentially, nothing is preventing the possibility to horizontally scale each one of the involved services.
 
-For what concerning the software installation & configuration I recommend to refer to the respective official documentation. Nevertheless, for sake of completeness, I will include the main configuration files within the References section.
+For what concerning the software installation & configuration I recommend to refer to the respective official documentation. Nevertheless, for sake of completeness, I will include the main configuration files within the References & Resources section.
 
-### KRILL
+#### KRILL
 
 Krill can be deployed using two different models: [Hosted RPKI](https://rpki.readthedocs.io/en/latest/rpki/implementation-models.html#hosted-rpki) or [Delegated RPKI](https://rpki.readthedocs.io/en/latest/rpki/implementation-models.html#delegated-rpki): I chose the latter.
 
@@ -122,7 +122,7 @@ SNviq7K+O4SS/RZezDuY/5MEXHvDWsZXldfX1r+RxsgXi0/5fuudLU4CYlWQGzs
 
 ```
 
-### OpenBSD's rpki-client
+#### OpenBSD's rpki-client
 
 The OpenBSD's rpki-client is periodically syncing with the Parent CA looking for new ROAs. In order to do that is taking as input some information regarding the Trust Anchor (belonging the Parent CA) in particular there's the certificate used to validate the received ROAs.
 
@@ -167,7 +167,7 @@ Once the validation process is completed the ROAs information are extracted from
 
 ```
 
-### HTTP Server/RTRTR & BGP Routers configuration
+#### HTTP Server/RTRTR & BGP Routers configuration
 
 A basic HTTP Service (python3 -m http.server 8081) is allowing the RTR Server to access the JSON file storing the ROAs' records. RTRTR is now listening for incoming connection from the BGP routers on the TCP socket <192.168.122.253:8282>.
 
@@ -190,7 +190,7 @@ Hostname/Address        Transport       State           Time            ROAs (IP
 
 ```
 
-### Enabling BGP Path validation
+#### Enabling BGP Path validation
 
 Now that all the legitimate ASNs are participating to the RPKI process I should be able to quickly identify the **Invalid** BGP paths. 
 As expected, displaying the IPv4 unicast BGP database of the router belonging to ASN 10 is reveling that the path towards ASN 30 is not verified:
@@ -221,6 +221,8 @@ Tracing the route to 170.0.0.1
  1  10.0.0.2 0 msec  *  9 msec
 
 ```
+
+## References & Resources
 
 
 
