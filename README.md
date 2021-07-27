@@ -15,7 +15,7 @@ The router belonging to **ASN 30** was compromised and started announcing an IP 
 whoever is behind **ASN 10** and will try to reach out to **170.0.0.1/32** will be forwarded to the compromised router behind AS 20.
 
 <p align="center">
-    <img src="rpki-lab/net/rpki_network.jpg">
+    <img src="https://1drv.ms/u/s!AjuhzEhpXrG53jVwIiDkSQLgXcqU?e=8SrADZ">
 </p>
 
 The BGP protocol will simply prefer the more specific prefix (170.0.0.1/32) over the less specific prefix (170.0.0.1/24). The traffic will flow towards the compromised ASN 30 via next-hop 10.0.0.6.
@@ -76,5 +76,5 @@ Other than nlnetlabs [OpenBSD's](https://www.openbsd.org) [rpki-client](https://
 3. Caching a list of the validated ROA Payloads (VRPs) in various formats, for example JSON.
 
 <p align="center">
-    <img src="rpki-lab/services/rpki_service.jpg">
+    <img src="https://1drv.ms/u/s!AjuhzEhpXrG53kEcPJKHK29R5r-S?e=N9TeJ5">
 </p>
