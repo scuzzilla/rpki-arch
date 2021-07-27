@@ -92,9 +92,12 @@ For what concerning the software installation & configuration I recommend to ref
 ### KRILL
 
 Krill can be deployed using two different models: [Hosted RPKI](https://rpki.readthedocs.io/en/latest/rpki/implementation-models.html#hosted-rpki) or [Delegated RPKI](https://rpki.readthedocs.io/en/latest/rpki/implementation-models.html#delegated-rpki). I chose the latter.
-After successfully completing both the [Repository setup](https://krill.docs.nlnetlabs.nl/en/stable/get-started.html#repository-setup) & the [Parent setup](https://krill.docs.nlnetlabs.nl/en/stable/get-started.html#parent-setup) I was ready to start Publishing new ROAs
+After successfully completing both the [Repository setup](https://krill.docs.nlnetlabs.nl/en/stable/get-started.html#repository-setup) & the [Parent setup](https://krill.docs.nlnetlabs.nl/en/stable/get-started.html#parent-setup) I was ready to start Publishing new ROAs.
 
-I called the Child CA "rpki-alfanetti" and as you can verify from the snippet below the relationship with the Parent CA (testbed offered by nlnetlabs) is in Status: **Success**
+I called the Child CA "rpki-alfanetti" and as you can see from the snippet below the relationship with the Parent CA (testbed offered by nlnetlabs) is in Status: **Success**.
+
+The Parent CA is certifying that I'm entitled over for some specific resources: "asn: AS10, v4: 170.0.0.0/24" is one of them. Third parties can, in a second stage, Download the Signed Certificate (to be verified) which proves the ownership of that specific resource.
+Using RPKI terminology, this specific resource is named Route Origin Authorization (also known as **ROA**)   
 ```
 root@rpki01:~# krillc parents statuses --token e1bb6e95c21740f83dba1adb1ff19ade --ca rpki-alfanetti
 Parent: testbed
