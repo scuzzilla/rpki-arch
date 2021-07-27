@@ -193,7 +193,7 @@ Hostname/Address        Transport       State           Time            ROAs (IP
 ### Enabling BGP Path validation
 
 Now that all the legitimate ASNs are participating to the RPKI process I should be able to quickly identify the **Invalid** BGP paths. 
-As expected, showing the IPv4 unicast BGP database of the router belonging to ASN 10 is reveling that the path towards ASN 30 is not verified:
+As expected, displaying the IPv4 unicast BGP database of the router belonging to ASN 10 is reveling that the path towards ASN 30 is not verified:
 ```c
 RP/0/0/CPU0:router-asn10#show bgp ipv4 unicast origin-as validity | b ^Origin-AS
 Tue Jul 27 14:42:25.998 CET
