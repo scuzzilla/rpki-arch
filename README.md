@@ -8,8 +8,8 @@ status: draft
 
 ## Context 
 
-Recently I decided to setup a dedicated test Environment to improve my knowledge around *Resource Public Key Infrastructure* (aka RPKI).
-Now that the *testbed* is finally up & running I would like to share my journey with the *Community*, eventually brainstorming together on how it could be tuned-up.
+Recently I decided to setup a dedicated test Environment to improve my knowledge around *Resource Public Key Infrastructure* (RPKI).
+Now that the testbed is finally up & running I would like to share my journey with the **Community**, eventually brainstorming together on how it could be tuned-up.
 
 
 ## Network Setup
