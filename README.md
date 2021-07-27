@@ -205,7 +205,7 @@ I*> 170.0.0.1/32       10.0.0.6                 0             0 30 i
 
 Processed 3 prefixes, 3 paths
 ``` 
-However, by default on CISCO-XR routers, invalid paths are not automatically discarded. We should manually enable the **valid** paths selection with this command:
+However, by default on CISCO-XR routers, invalid paths are not automatically discarded. I should manually enable the **valid** paths selection with this command:
 ```c
 router bgp <ASN>
  bgp bestpath origin-as use validity
