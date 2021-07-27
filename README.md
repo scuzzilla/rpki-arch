@@ -15,7 +15,7 @@ The router belonging to **ASN 30** was compromised and started announcing an IP 
 whoever is behind **ASN 10** and will try to reach out to **170.0.0.1/32** will be forwarded to the compromised router behind AS 20.
 
 <p align="center">
-    <img src="https://1drv.ms/u/s!AjuhzEhpXrG53jVwIiDkSQLgXcqU?e=8SrADZ">
+    <img src="https://db3pap005files.storage.live.com/y4mVB-sk-NEdqjSK0XtasBR6RUEv78ILsAQ0OjMGUSW3HrN0ekRjJnIEeyblR2gOwxMIq_5jG4Sc5ONTBVdAT8DbYdOu5Xxt8NWd-2NGQOYohuHNCOHOC9TpNp3fz4nOQrFk2SBhuVVoklRJlmFXptbRO0Sk0shVKl_OO3mYcGCCcog9KcE2W7nQBFZmj7W0F3f?width=487&height=337&cropmode=none" width="487" height="337" />
 </p>
 
 The BGP protocol will simply prefer the more specific prefix (170.0.0.1/32) over the less specific prefix (170.0.0.1/24). The traffic will flow towards the compromised ASN 30 via next-hop 10.0.0.6.
@@ -76,5 +76,5 @@ Other than nlnetlabs [OpenBSD's](https://www.openbsd.org) [rpki-client](https://
 3. Caching a list of the validated ROA Payloads (VRPs) in various formats, for example JSON.
 
 <p align="center">
-    <img src="https://1drv.ms/u/s!AjuhzEhpXrG53kHUsBzjzoQ5Etpi">
+	<img src="https://db3pap005files.storage.live.com/y4mTPMo0mwmOqtt1qwXrckrvnUU1joUjU8Pqz6aVwvg_hDf5olmyXaOgE9Ed2xGTPM_bfIBiEW9WD_xE3MZXJFkPP90mMOw028DO7aifFZsyn2rwwO0tnhSSZj6rOpIb90hhZxlmR62DWBZipUE5XpeLDxAzkdqGbjv9wvdUCL1B8U2Rnw76pDtsUXDzLX_GV09?width=493&height=716&cropmode=none" width="493" height="716" />
 </p>
