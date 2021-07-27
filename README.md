@@ -125,7 +125,8 @@ SNviq7K+O4SS/RZezDuY/5MEXHvDWsZXldfX1r+RxsgXi0/5fuudLU4CYlWQGzs
 ### OpenBSD's rpki-client
 
 The OpenBSD's rpki-client is periodically syncing with the Parent CA looking for new ROAs. In order to do that is taking as input some information regarding the Trust Anchor (belonging the Parent CA) in particular there's the certificate used to validate the received ROAs.
-the rpki-client is somehow hiding the complexity coming from the cryptography required in order to validate the received ROAs.
+
+The rpki-client is somehow hiding the complexity coming from the cryptography required in order to validate the received ROAs.
 
 Once the validation process is completed the ROAs information are extracted from the associated certificates and presented in a clear text format (for example JSON); ready to be "digested" by the routers.
 ```json
