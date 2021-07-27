@@ -18,7 +18,7 @@ Using [eve-ng](https://www.eve-ng.net/) I linked together few routers with the m
 For sake of simplicity I deployed only three routers, each one of them belonging to a different BGP Autonomous System. 
 
 The router belonging to **ASN 30** was compromised and started announcing an IP address which overlaps with an IP prefix range *legitimately* advertised by **ASN 20**. From now on, 
-whoever is behind **ASN 10** and will try to reach out to **170.0.0.1/32** will be forwarded to the compromised router belonging to AS 20.
+whoever is behind **ASN 10** and will try to reach out to **170.0.0.1/32** will be forwarded to the rouge router belonging to AS 30.
 
 <p align="center">
     <img src="https://db3pap005files.storage.live.com/y4mVB-sk-NEdqjSK0XtasBR6RUEv78ILsAQ0OjMGUSW3HrN0ekRjJnIEeyblR2gOwxMIq_5jG4Sc5ONTBVdAT8DbYdOu5Xxt8NWd-2NGQOYohuHNCOHOC9TpNp3fz4nOQrFk2SBhuVVoklRJlmFXptbRO0Sk0shVKl_OO3mYcGCCcog9KcE2W7nQBFZmj7W0F3f?width=487&height=337&cropmode=none" width="487" height="337" />
