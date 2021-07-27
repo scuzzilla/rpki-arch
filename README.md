@@ -167,6 +167,7 @@ Once the validation process is completed the ROAs information are extracted from
 ### HTTP Server/RTRTR & BGP Routers configuration
 
 A basic HTTP Service (python3 -m http.server 8081) is allowing the RTR Server to access the JSON file storing the ROAs' records. RTRTR is now listening for incoming connection from the BGP routers on the TCP socket <192.168.122.253:8282>.
+
 The RTR Server should be reachable by the involved routers and the below configuration should be present on each one of them. 
 ```c
 router bgp <ASN>
