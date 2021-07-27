@@ -224,32 +224,21 @@ Tracing the route to 170.0.0.1
 
 ## References & Resources
 
+- Documentation:
+1. [nlnetlabs](https://www.nlnetlabs.nl/)
+2. [krill](https://krill.docs.nlnetlabs.nl/en/stable/index.html)
+3. [OpenBSD rpki-client](https://man.openbsd.org/rpki-client)
+4. [RTRTR](https://rtrtr.docs.nlnetlabs.nl/)
+5. [EVE-NG](https://www.eve-ng.net/)
 
+- NET Resources:
+1. [router ASN 10 configuration](https://raw.githubusercontent.com/scuzzilla/rpki-arch/main/rpki-lab/net/router1.cfg)
+2. [router ASN 20 configuration](https://raw.githubusercontent.com/scuzzilla/rpki-arch/main/rpki-lab/net/router2.cfg)
+3. [router ASN 30 configuration](https://raw.githubusercontent.com/scuzzilla/rpki-arch/main/rpki-lab/net/router3.cfg)
+4. [net verification commands](https://raw.githubusercontent.com/scuzzilla/rpki-arch/main/rpki-lab/net/network-cmds.cfg)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Service Resources:
+1. [Krill configuration](https://raw.githubusercontent.com/scuzzilla/rpki-arch/main/rpki-lab/services/krill.conf)
+2. [rpki-client systemd service configuration](https://raw.githubusercontent.com/scuzzilla/rpki-arch/main/rpki-lab/services/rpki-client.service)
+3. [RTRTR configuration](https://raw.githubusercontent.com/scuzzilla/rpki-arch/main/rpki-lab/services/rtrtr.conf)
+4. [ROAs JSON format](https://raw.githubusercontent.com/scuzzilla/rpki-arch/main/rpki-lab/services/ROAs.json)
