@@ -70,7 +70,7 @@ RP/0/0/CPU0:router-asn10#
 Whenever it comes to RPKI [nlnetlabs](https://www.nlnetlabs.nl/) is one of the main reference: they wrote extremely clear [Documentation](https://rpki.readthedocs.io/) and last but not least 
 they developed some of they key software components I (also) utilized within (My)Lab Infrastructure:
 
-- [Krill](https://krill.docs.nlnetlabs.nl/) can be classified as "Certificate Authority Software" and it's mainly responsible for Forging and Publishing the *Route(s) Origin Authorization* (ROAs) to the Parent Certification Authority.
+- [Krill](https://krill.docs.nlnetlabs.nl/) can be classified as "Certificate Authority Software" and in my setup it's mainly responsible for Forging and Publishing the *Route(s) Origin Authorization* (ROAs) to the Parent Certification Authority.
 
 - [RTRTR](https://rtrtr.docs.nlnetlabs.nl/) can be classified as *RPKI-to-router protocol* (RTR) Server Software ([RFC 6810-v0](https://tools.ietf.org/html/rfc6810.html) & [RFC 8210-v1](https://tools.ietf.org/html/rfc8210.html)).
 Its main job is to dispatch the validated ROAs to the BGP enabled routers.
