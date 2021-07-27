@@ -1,3 +1,9 @@
+---
+title: RPKI (My)Lab Environment
+tags: ['RPKI', 'rpki-client', 'nlnetlabs', 'BGP', 'OpenBSD']
+status: draft
+---
+
 # RPKI (My)Lab Environment
 
 ## Context 
@@ -62,12 +68,12 @@ RP/0/0/CPU0:router-asn10#
 ## RPKI IT Infrastructure Setup
 
 [nlnetlabs](https://www.nlnetlabs.nl/) is one of the main reference when it comes to the RPKI topic: they wrote extremely clear [Documentation](https://rpki.readthedocs.io/) & last but not least 
-they developed some of they key software components I also utilized within (My)Lab Infrastructure:
+they developed some of they key software components I (also) utilized within (My)Lab Infrastructure:
 
-- [Krill](https://krill.docs.nlnetlabs.nl/) classified as Certificate Authority Software. Mainly responsible for Forging and Publishing the ROAs to the Parent Certification Authority.
+- [Krill](https://krill.docs.nlnetlabs.nl/) can be classified as "Certificate Authority Software" and it's mainly responsible for Forging and Publishing the ROAs to the Parent Certification Authority.
 
-- [RTRTR](https://rtrtr.docs.nlnetlabs.nl/) classified as RTR (RPKI-to-router protocol) Server Software ([RFC 6810 (v0)](https://tools.ietf.org/html/rfc6810.html) & [RFC 8210 (v1)](https://tools.ietf.org/html/rfc8210.html)).
-Mainly responsible for Dispatching the validated ROAs to the BGP routers.
+- [RTRTR](https://rtrtr.docs.nlnetlabs.nl/) can be classified as RTR (RPKI-to-router protocol) Server Software ([RFC 6810 (v0)](https://tools.ietf.org/html/rfc6810.html) & [RFC 8210 (v1)](https://tools.ietf.org/html/rfc8210.html)).
+Its main job is to dispatch the validated ROAs to the BGP routers.
 
 Other than nlnetlabs [OpenBSD's](https://www.openbsd.org) [rpki-client](https://www.rpki-client.org/) is with no doubt the core component of the whole solution - responsible for:
 
