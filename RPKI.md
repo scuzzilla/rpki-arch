@@ -21,7 +21,7 @@ LIRs =>  Local Internet Registries (Authorized by RIRs)
 
 ---
 
-### Infrastructure Setup.
+### Infrastructure Setup
 
 1. Krill - Child CA:
 ```
