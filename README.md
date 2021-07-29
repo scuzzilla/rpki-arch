@@ -224,6 +224,9 @@ Tracing the route to 170.0.0.1
 
 ## References & Resources
 
+- Clone & Test:
+1. [RPKI (My)Lab @github](https://github.com/scuzzilla/rpki-arch)
+
 - Documentation:
 1. [nlnetlabs](https://www.nlnetlabs.nl/)
 2. [krill](https://krill.docs.nlnetlabs.nl/en/stable/index.html)
