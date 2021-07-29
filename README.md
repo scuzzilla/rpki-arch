@@ -21,7 +21,7 @@ The router belonging to **ASN 30** was compromised and started announcing an IP 
 whoever is behind **ASN 10** and will try to reach out to **170.0.0.1/32** will be forwarded to the rogue router belonging to **ASN 30**.
 
 <p align="center">
-    <img src="https://db3pap005files.storage.live.com/y4mY2Xf9N7gMtcL9S7vHg3a4GylwAxPyF0dBtxC55d8J0ob07Qav6D-xU0CESAD00N2AcJDjT-LIFPg5qYAfyZtGlLaRSYed_DuYnHCURcuvc3cqlBCYzTX2MRvobpI3Wn1xKmHzAf170ieBbiMRYtnNzly-U3QURpEJjXGxMANJvUm7GxuBKCfkUlbw15xf9f8?width=488&height=337&cropmode=none" width="488" height="337" alt="Network Setup"/>
+    <img src="https://db3pap005files.storage.live.com/y4m3_aQmFsYss4nQq8Qk7xGUxxnXtOq1YN01DZO7Y9PbX9aDpZ38-RXc2MmK5iemTVnSdprLeu0NqGJU4DHixcXxvw9rvCvXR0ncQ0PPF1Rma3KBo9iCMWwgrX3-QmQdJtU1uCMTaDn3-Uigu4g9bBgW-V6WXiuf8nd57-hcKA6AgYnCjjDbDKXTWcZf4ckbe7l?width=660&height=466&cropmode=none" width="660" height="466" />
 </p>
 
 The BGP protocol will simply prefer the more specific prefix (170.0.0.1/32) over the less specific one (170.0.0.1/24). The traffic will flow towards the compromised ASN 30 via next-hop 10.0.0.6 (instead of 10.0.0.2).
