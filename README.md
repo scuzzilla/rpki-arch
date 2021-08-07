@@ -4,7 +4,7 @@ tags: ['RPKI', 'rpki-client', 'nlnetlabs', 'BGP', 'OpenBSD']
 status: draft
 ---
 
-# RPKI (My)Lab Environment
+# RPKI (My) Lab Environment
 
 ## Context 
 
