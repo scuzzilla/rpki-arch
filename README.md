@@ -21,7 +21,7 @@ The router belonging to **ASN 30** was compromised and started announcing an IP 
 whoever is behind **ASN 10** and will try to reach out to **170.0.0.1/32** will be forwarded to the rogue router belonging to **ASN 30**.
 
 <p align="center">
-    <img src="https://db3pap005files.storage.live.com/y4m3_aQmFsYss4nQq8Qk7xGUxxnXtOq1YN01DZO7Y9PbX9aDpZ38-RXc2MmK5iemTVnSdprLeu0NqGJU4DHixcXxvw9rvCvXR0ncQ0PPF1Rma3KBo9iCMWwgrX3-QmQdJtU1uCMTaDn3-Uigu4g9bBgW-V6WXiuf8nd57-hcKA6AgYnCjjDbDKXTWcZf4ckbe7l?width=660&height=466&cropmode=none" width="660" height="466" />
+<img src="https://db3pap005files.storage.live.com/y4myDDVwcWt6wsFqSqLT1zVrUncdwrRRvKuhfkmhtNoyvBcd89qIsoiW9TiZmqsdYuc3p4KO2NsWUQLHiW9liQrXUtMhPfjGoheC63EZ4xayB6ttp2i6Bvwnz3fjI3xU6RSazwcFGcpkvUuxqWaZmU6Avcpz32RP8kd3up-3QfvD6luMyk7UjqZ5CIl3SpOGDnU?width=660&height=466&cropmode=none" width="660" height="466" />
 </p>
 
 The BGP protocol will simply prefer the more specific prefix (170.0.0.1/32) over the less specific one (170.0.0.1/24). The traffic will flow towards the compromised ASN 30 via next-hop 10.0.0.6 (instead of 10.0.0.2).
@@ -82,7 +82,7 @@ Other than nlnetlabs, [OpenBSD's](https://www.openbsd.org) [rpki-client](https:/
 3. Caching a list of the *validated ROAs' Payloads* (VRPs) in various formats, for example JSON.
 
 <p align="center">
-	<img src="https://db3pap005files.storage.live.com/y4mTPMo0mwmOqtt1qwXrckrvnUU1joUjU8Pqz6aVwvg_hDf5olmyXaOgE9Ed2xGTPM_bfIBiEW9WD_xE3MZXJFkPP90mMOw028DO7aifFZsyn2rwwO0tnhSSZj6rOpIb90hhZxlmR62DWBZipUE5XpeLDxAzkdqGbjv9wvdUCL1B8U2Rnw76pDtsUXDzLX_GV09?width=493&height=716&cropmode=none" width="493" height="716" alt="RPKI IT Infrastructure Setup"/>
+<img src="https://db3pap005files.storage.live.com/y4mvpqLBJC9gUDiB2SZ_qO6Rh_s7lp9n04FeU4Tl-9NDM8Rz-iC6sSLSsoFJBGimnunqmFA1cTSuLsISckzWD6eI7iVo6t97Ls4AO7mwDUV2eAuKNREYYkrrounHEisBpPFQxGelA4ll9DluFSAyKOCaAZTbmvgQOLWWWv8Or7mnjH2mdaffdCdq6vtOMKzLUt8?width=493&height=716&cropmode=none" width="493" height="716" />
 </p>
 
 
